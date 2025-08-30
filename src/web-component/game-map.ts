@@ -48,10 +48,19 @@ export class GameMap extends HTMLElement {
     if (!src) return;
     try {
       this.mapData = await getData(src);
-      console.log(this.mapData)
+      // Set initial zoom to fit the viewport after loading data
+      this.initializeZoom();
     } catch (error) {
       console.error('Failed to load data:', error);
     }
+  }
+
+  private initializeZoom(): void {
+    const canvas = this.shadowRoot?.querySelector('canvas')
+    if (!canvas || !this.mapData) return
+    
+    // Start with a reasonable zoom level (1.0), don't start at minimum
+    this.currentZoom = 1.0
   }
 
   private render (data: MapData | null): void {
@@ -77,14 +86,30 @@ export class GameMap extends HTMLElement {
 
     canvas.addEventListener('wheel', (e) => {
       e.preventDefault()
-      const zoomFactor = e.deltaY < 0 ? 1.1 : 0.9
-      const newZoom = Math.max(this.minZoom, Math.min(this.maxZoom, this.currentZoom * zoomFactor))
-      
-      if (newZoom !== this.currentZoom) {
-        this.currentZoom = newZoom
-        this.render(this.mapData)
+      const zoomFactor = e.deltaY < 0 ? 1.1 : 1/1.1
+      this.zoom(zoomFactor)
+    })
+
+    canvas.addEventListener('keydown', (e) => {
+      if (e.key === '+' || e.key === '=') {
+        e.preventDefault()
+        this.zoom(1.1)
+      } else if (e.key === '-' || e.key === '_') {
+        e.preventDefault()
+        this.zoom(1/1.1)
       }
     })
+
+    canvas.setAttribute('tabindex', '0')
+  }
+
+  private zoom(factor: number): void {
+    const newZoom = Math.max(1.0, Math.min(this.maxZoom, this.currentZoom * factor))
+    
+    if (newZoom !== this.currentZoom) {
+      this.currentZoom = newZoom
+      this.render(this.mapData)
+    }
   }
 
   private createWaypoints (): void {
