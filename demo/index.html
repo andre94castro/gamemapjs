@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Map Component Demo</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        game-map {
+            height: 100vh;
+            width: 100vw;
+        }
+        
+        .demo-info {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 8px;
+            max-width: 300px;
+            z-index: 1000;
+        }
+        
+        .demo-info h3 {
+            margin: 0 0 10px 0;
+        }
+        
+        .demo-info p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-info">
+        <h3>Game Map Component Demo</h3>
+        <p><strong>Usage:</strong> Just one line of HTML!</p>
+        <p><code>&lt;game-map data-src="assets/hyrule-data.json"&gt;&lt;/game-map&gt;</code></p>
+        <p><strong>Features:</strong></p>
+        <ul>
+            <li>Pan and zoom the map</li>
+            <li>Filter waypoints by category</li>
+            <li>Hover waypoints for details</li>
+            <li>Fully data-driven from JSON</li>
+        </ul>
+    </div>
+
+    <!-- The entire interactive map in just one line! -->
+    <game-map data-src="assets/hyrule-data.json"></game-map>
+
+    <!-- Load the component script -->
+    <script type="module" src="../dist/web-component/game-map.js"></script>
+</body>
+</html>

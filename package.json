@@ -1,0 +1,42 @@
+{
+  "name": "game-map-component",
+  "version": "1.0.0",
+  "description": "A reusable, dependency-free interactive map web component",
+  "type": "module",
+  "main": "dist/game-map.min.js",
+  "scripts": {
+    "build": "tsc",
+    "serve": "node dev-server.js",
+    "dev": "tsc --watch & node dev-server.js",
+    "watch": "tsc --watch"
+  },
+  "keywords": [
+    "web-component",
+    "map",
+    "interactive",
+    "vanilla-js",
+    "game-map",
+    "zero-dependencies"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "files": [
+    "dist/",
+    "demo/",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/game-map-component.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/game-map-component/issues"
+  },
+  "homepage": "https://github.com/yourusername/game-map-component#readme",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "eslint": "^9.0.0",
+    "neostandard": "^0.11.0",
+    "typescript": "^5.0.0"
+  }
+}

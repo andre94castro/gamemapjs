@@ -1,0 +1,75 @@
+{
+  "mapInfo": {
+    "image": "assets/images/hyrule-map.png",
+    "dimensions": [4096, 3584],
+    "attribution": "Map of Hyrule, The Legend of Zelda: Breath of the Wild, potato"
+  },
+  "categories": [
+    { 
+      "id": "shrine", 
+      "name": "Shrines", 
+      "icon": "icons/shrine.svg",
+      "color": "#00FFFF" 
+    },
+    { 
+      "id": "tower", 
+      "name": "Towers",
+      "icon": "icons/tower.svg",
+      "color": "#FFD700"
+    },
+    { 
+      "id": "stable", 
+      "name": "Stables", 
+      "color": "#D2691E" 
+    },
+    {
+      "id": "korok",
+      "name": "Korok Seeds",
+      "color": "#90EE90"
+    }
+  ],
+  "waypoints": [
+    {
+      "id": 1,
+      "title": "Great Plateau Tower",
+      "description": "The first tower activated. Offers a commanding view of the plateau.",
+      "coords": [1950, 2800],
+      "category": "tower"
+    },
+    {
+      "id": 2,
+      "title": "Oman Au Shrine",
+      "description": "Magnesis Trial - Learn to manipulate metal objects.",
+      "coords": [1800, 2750],
+      "category": "shrine"
+    },
+    {
+      "id": 3,
+      "title": "Ja Baij Shrine",
+      "description": "Bomb Trial - Master the art of remote bombs.",
+      "coords": [2100, 2850],
+      "category": "shrine"
+    },
+    {
+      "id": 4,
+      "title": "Owa Daim Shrine",
+      "description": "Stasis Trial - Control time itself.",
+      "coords": [1850, 2950],
+      "category": "shrine"
+    },
+    {
+      "id": 5,
+      "title": "Central Hyrule Stable",
+      "description": "A peaceful stable where travelers rest.",
+      "coords": [2200, 2400],
+      "category": "stable"
+    },
+    {
+      "id": 6,
+      "title": "Hidden Korok Seed",
+      "description": "A well-hidden korok seed under a rock.",
+      "coords": [1900, 2600],
+      "category": "korok"
+    }
+  ]
+}
