@@ -33,3 +33,5 @@ export interface GameMapAttributes {
   'initial-y'?: number
   'initial-zoom'?: number
 }
+
+export type SizeSyncMode = 'auto' | 'host' | 'canvas' | 'none'

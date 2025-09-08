@@ -24,6 +24,8 @@ describe('GameMap', () => {
   let mockContext: CanvasRenderingContext2D
 
   beforeEach(() => {
+    // Ensure ResizeObserver absence doesn't break
+    ;(globalThis as any).ResizeObserver = undefined
     // Create a fresh GameMap instance
     gameMap = new GameMap()
     
@@ -60,6 +62,27 @@ describe('GameMap', () => {
     
     // Add to DOM to trigger connectedCallback
     document.body.appendChild(gameMap)
+  })
+
+  describe('size-sync attribute', () => {
+    it('defaults to auto when not set', () => {
+      // Access private for test purposes
+      expect((gameMap as any)['sizeSync']).toBe('auto')
+    })
+
+    it('accepts host/canvas/none and normalizes unknown to auto', () => {
+      ;(gameMap as any).attributeChangedCallback('size-sync', null, 'host')
+      expect((gameMap as any)['sizeSync']).toBe('host')
+
+      ;(gameMap as any).attributeChangedCallback('size-sync', 'host', 'canvas')
+      expect((gameMap as any)['sizeSync']).toBe('canvas')
+
+      ;(gameMap as any).attributeChangedCallback('size-sync', 'canvas', 'none')
+      expect((gameMap as any)['sizeSync']).toBe('none')
+
+      ;(gameMap as any).attributeChangedCallback('size-sync', 'none', 'weird')
+      expect((gameMap as any)['sizeSync']).toBe('auto')
+    })
   })
 
   describe('zoom functionality', () => {

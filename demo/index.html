@@ -48,12 +48,31 @@
             <li>Hover waypoints for details</li>
             <li>Fully data-driven from JSON</li>
         </ul>
+        <div style="margin-top:10px">
+          <label for="syncMode"><strong>Size Sync:</strong></label>
+          <select id="syncMode">
+            <option value="auto" selected>auto</option>
+            <option value="host">host</option>
+            <option value="canvas">canvas</option>
+            <option value="none">none</option>
+          </select>
+          <small style="display:block;margin-top:6px">Try resizing the page or toggling modes.</small>
+        </div>
     </div>
 
     <!-- The entire interactive map in just one line! -->
-    <game-map data-src="assets/hyrule-data.json"></game-map>
+    <game-map id="demoMap" data-src="assets/hyrule-data.json"></game-map>
 
     <!-- Load the component script -->
     <script type="module" src="../dist/web-component/game-map.js"></script>
+    <script>
+      const sel = document.getElementById('syncMode')
+      const map = document.getElementById('demoMap')
+      sel.addEventListener('change', () => {
+        const v = sel.value
+        if (v === 'auto') map.removeAttribute('size-sync')
+        else map.setAttribute('size-sync', v)
+      })
+    </script>
 </body>
 </html>
